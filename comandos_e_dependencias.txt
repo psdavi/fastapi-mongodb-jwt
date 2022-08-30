@@ -1,0 +1,35 @@
+
+PYTHON - LINUX
+
+------------------------------------------------------------------
+criando ambiente virtual no linux
+
+python3 -m venv ~/PYTHON/JWT/fastapi-mongodb-jwt/env-davi
+
+
+----------------------------------------------------------------
+ativando o ambiente virtual no linux
+
+source ./python_env/bin/activate
+or just go to the directory
+
+cd /python_env/bin/
+and then
+
+source ./activate
+--------------------------------------------------------------
+
+INSTALANDO A FASTAPI (necessário estar com o ambiente virtual ativado)
+
+pip install fastapi "uvicorn[standard]"
+
+
+subir o server usando o uvicorn
+
+-------------------------------------------------------------
+
+
+
+DEPENDENCIAS
+
+ao rodar esse repoitório em outra máquina talvez seja necessário deletar o ambiente virtual e criar outro.
