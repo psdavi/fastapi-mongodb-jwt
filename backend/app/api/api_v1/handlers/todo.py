@@ -1,4 +1,4 @@
-#from typing import List
+from typing import List
 from uuid import UUID
 from fastapi import APIRouter, Depends
 from app.models.user_model import User
@@ -10,11 +10,16 @@ from app.models.todo_model import Todo
 
 todo_router = APIRouter()
 
-@todo_router.get('/', summary="Listar todos os afazeres do Usuário", response_model=TodoOut)
+@todo_router.get('/', summary="Listar todos os afazeres do Usuário", response_model=List[TodoOut])
 async def list(current_user: User = Depends(get_current_user)):
     return await TodoService.list_todos(current_user)
 
 
-@todo_router.post('/create', summary="Create Todo", response_model=Todo)
+@todo_router.post('/create', summary="Criar um novo afazer", response_model=Todo)
 async def create_todo(data: TodoCreate, current_user: User = Depends(get_current_user)):
     return await TodoService.create_todo(current_user, data)
+
+
+@todo_router.get('/{todo_id}', summary="Pegar um afazer pelo todo_id", response_model=TodoOut)
+async def retrieve(todo_id: UUID, current_user: User = Depends(get_current_user)):
+    return await TodoService.retrieve_todo(current_user, todo_id)
