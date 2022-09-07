@@ -51,6 +51,7 @@ pip install python-decouple==3.1 (só funcionou com essa versão no linux)
 pip install beanie
 pip install email-validator
 pip install python-jose[cryptography] "passlib[bcrypt]"
+pip install python-multipart
 
 
 ----------------------------------------------------------------------
