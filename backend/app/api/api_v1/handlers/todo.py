@@ -23,3 +23,14 @@ async def create_todo(data: TodoCreate, current_user: User = Depends(get_current
 @todo_router.get('/{todo_id}', summary="Pegar um afazer pelo todo_id", response_model=TodoOut)
 async def retrieve(todo_id: UUID, current_user: User = Depends(get_current_user)):
     return await TodoService.retrieve_todo(current_user, todo_id)
+
+
+@todo_router.put('/{todo_id}', summary="Atualizar afazer pelo todo_id", response_model=TodoOut)
+async def update(todo_id: UUID, data: TodoUpdate, current_user: User = Depends(get_current_user)):
+    return await TodoService.update_todo(current_user, todo_id, data)
+
+
+@todo_router.delete('/{todo_id}', summary="Deletar afazer pelo todo_id")
+async def delete(todo_id: UUID, current_user: User = Depends(get_current_user)):
+    await TodoService.delete_todo(current_user, todo_id)
+    return None
